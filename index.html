@@ -1,31 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Looms of Africa — West African strip-weave, reimagined</title>
-  <meta name="description" content="Looms of Africa transforms handwoven Aso-oke and Kente from across West Africa into bespoke art, apparel and interiors. Each piece is made to order by textile artist Usibakaiye Agbeyegbe." />
-  <meta property="og:title" content="Looms of Africa — West African strip-weave, reimagined" />
-  <meta property="og:description" content="Bespoke art, apparel and interiors made from handwoven African strip cloth. Made to order by textile artist Usibakaiye Agbeyegbe." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0b3854" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --paper:#f3efe6;
-      --paper-2:#e9e2d4;
-      --ink:#15120c;
-      --ink-soft:rgba(21,18,12,.62);
-      --teal:#0b3854;
-      --teal-soft:rgba(11,56,84,.66);
-      --line:rgba(21,18,12,.15);
-      --thread:#cf3a6f;
-      --w1:#cf3a6f;
-      --w2:#c5912f;
-      --w3:#0b3854;
-      --maxw:1180px;
-      --pad:clamp(22px,5vw,72px);
-      --serif:"Cormorant Garamond",Georgia,serif;
-      --sans:"Inter",system-ui,sans-serif;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Looms of Africa — West African strip-weave, reimagined</title>
+<meta name="description" content="Looms of Africa transforms handwoven Aso-oke and Kente from across West Africa into bespoke art, apparel and interiors. Each piece is made to order by textile artist Usibakaiye Agbeyegbe." />
+<meta property="og:title" content="Looms of Africa — West African strip-weave, reimagined" />
+<meta property="og:description" content="Bespoke art, apparel and interiors made from handwoven African strip cloth. Made to order by textile artist Usibakaiye Agbeyegbe." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0b3854" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3efe6;
+    --paper-2:#e9e2d4;
+    --ink:#15120c;
+    --ink-soft:rgba(21,18,12,.62);
+    --teal:#0b3854;
+    --teal-soft:rgba(11,56,84,.66);
+    --line:rgba(21,18,12,.15);
+    --thread:#cf3a6f;
+    --w1:#cf3a6f;
+    --w2:#c5912f;
+    --w3:#0b3854;
+    --maxw:1180px;
+    --pad:clamp(22px,5vw,72px);
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"Inter",system-ui,sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-.01em;color:var(--ink)}
+
+  .eyebrow{font-family:var(--sans);font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--teal-soft);display:inline-block}
+
+  .btn{font-family:var(--sans);font-weight:500;font-size:.92rem;letter-spacing:.02em;display:inline-flex;align-items:center;gap:.5em;cursor:pointer;border:1px solid transparent;border-radius:0;padding:.9em 1.5em;transition:background .25s ease,color .25s ease,border-color .25s ease}
+  .btn-primary{background:var(--teal);color:var(--paper)}
+  .btn-primary:hover{background:#0a2c43}
+  .link-arrow{font-family:var(--sans);font-weight:500;font-size:.92rem;letter-spacing:.02em;color:var(--teal);display:inline-flex;align-items:center;gap:.4em;border-bottom:1px solid transparent;padding-bottom:2px;transition:gap .25s ease,border-color .25s ease}
+  .link-arrow:hover{gap:.7em;border-color:var(--teal)}
+  .link-arrow.big{font-size:1.05rem}
+
+  :focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:50;background:rgba(243,239,230,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:var(--serif);font-weight:600;font-size:1.4rem;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--teal)}
+  .nav-links{display:flex;align-items:center;gap:clamp(16px,2.4vw,34px)}
+  .nav-links a{font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);transition:color .2s}
+  .nav-links a:hover{color:var(--teal)}
+  .nav-toggle{display:none;background:none;border:0;color:var(--ink);font-size:1.4rem;cursor:pointer}
+
+  /* hero */
+  .hero{padding-top:clamp(70px,12vw,150px);padding-bottom:clamp(80px,13vw,170px)}
+  .hero-inner{max-width:1000px}
+  .hero h1{font-size:clamp(3.2rem,9vw,7rem);font-weight:500;line-height:1;letter-spacing:-.015em;color:var(--teal);margin:.32em 0 0}
+  .hero h1 em{font-style:italic}
+  .hero .lead{font-family:var(--sans);font-size:clamp(1.02rem,1.5vw,1.2rem);line-height:1.7;color:var(--ink-soft);max-width:52ch;margin:1.6rem 0 2.2rem}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+
+  .pull-cue{margin-top:clamp(48px,7vw,82px);display:inline-flex;flex-direction:column;align-items:flex-start;gap:10px;background:none;border:0;cursor:pointer;padding:4px 0;color:var(--teal-soft);font-family:var(--sans);font-weight:600;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;transition:color .3s}
+  .pull-cue:hover{color:var(--teal)}
+  .pull-cue .arrow{font-size:.9rem;animation:tug 1.8s ease-in-out infinite}
+  .pull-cue .bead{width:10px;height:10px;border-radius:50%;background:var(--thread);box-shadow:0 0 0 4px rgba(207,58,111,.14)}
+  .pull-cue.hide{opacity:0;pointer-events:none;transition:opacity .5s ease}
+  @keyframes tug{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+  /* the coloured thread, kept to the margin */
+  .thread-layer{position:absolute;top:0;left:0;width:100%;pointer-events:none;z-index:4;overflow:visible}
+  
+  /* Adjusted halo to be slightly thinner so lines don't completely erase each other */
+  .wire-halo{fill:none;stroke:var(--paper);stroke-width:3.5px;stroke-linecap:round;stroke-linejoin:round}
+  .wire{fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .wire.w1{stroke:var(--w1);stroke-width:1.7;opacity:.95}
+  .wire.w2{stroke:var(--w2);stroke-width:1.4;opacity:.82}
+  .wire.w3{stroke:var(--w3);stroke-width:1.6;opacity:.9}
+  .knot{fill:var(--teal);stroke:var(--paper);stroke-width:1.4;opacity:0;transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .55s cubic-bezier(.2,.9,.25,1.25),opacity .35s ease}
+  .knot.on,.knot.start{opacity:1;transform:scale(1)}
+  .knot.start{fill:var(--thread)}
+  .tassel line{stroke:var(--thread);stroke-width:1.4;stroke-linecap:round;opacity:0;transition:opacity .5s ease}
+  .tassel.on line{opacity:.8}
+
+  /* sections */
+  .section{padding:clamp(72px,11vw,140px) 0;border-top:1px solid var(--line)}
+  .split{display:grid;grid-template-columns:minmax(0,.26fr) minmax(0,.74fr);gap:clamp(24px,4vw,72px)}
+  .split .label{padding-top:.5rem}
+
+  .stitch{display:block;height:2px;width:0;margin-top:18px;background:var(--thread);transition:width .9s cubic-bezier(.2,.7,.2,1) .15s}
+  .reveal.in .stitch{width:48px}
+
+  .statement{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3.4vw,2.9rem);line-height:1.3;color:var(--ink);max-width:26ch}
+  .statement em{font-style:italic;color:var(--teal)}
+
+  /* artist */
+  .artist-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,5vw,72px);align-items:start}
+  .portrait-img{aspect-ratio:394/505;background:var(--paper-2);border:1px solid var(--line);overflow:hidden}
+  .portrait-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  .portrait:hover .portrait-img img{transform:scale(1.03)}
+  .portrait figcaption{margin-top:14px;font-family:var(--sans);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .artist-body h2{font-size:clamp(2rem,4vw,3.2rem);margin:.3em 0 0}
+  .name-line{font-family:var(--sans);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-soft);margin:1.4rem 0 1.2rem}
+  .artist-body p{color:var(--ink-soft);max-width:50ch;font-size:1.02rem}
+  .quote{margin-top:2.4rem;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.5rem,2.8vw,2.2rem);line-height:1.35;color:var(--ink);max-width:24ch}
+  .quote cite{display:block;margin-top:1rem;font-family:var(--sans);font-style:normal;font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-soft)}
+
+  /* craft */
+  .craft-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,72px);align-items:start}
+  .craft-grid h2{font-size:clamp(2rem,4vw,3.2rem);margin:.3em 0 0}
+  .craft-grid p{color:var(--ink-soft);max-width:50ch;font-size:1.02rem;margin-top:1.2rem}
+  .pillars{display:flex;gap:36px;flex-wrap:wrap;margin-top:2.4rem}
+  .pillar{flex:1;min-width:160px}
+  .pillar .k{font-family:var(--serif);font-weight:500;font-size:1.35rem;color:var(--teal)}
+  .pillar .v{font-family:var(--sans);font-size:.92rem;color:var(--ink-soft);margin-top:.4rem;line-height:1.6}
+  .loom-img{aspect-ratio:4/5;background:var(--paper-2);border:1px solid var(--line);overflow:hidden}
+  .loom-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  .loom-photo:hover .loom-img img{transform:scale(1.03)}
+  .loom-photo figcaption{margin-top:14px;font-family:var(--sans);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* collections */
+  .coll-head{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:clamp(20px,3vw,40px)}
+  .coll-head h2{font-size:clamp(2.6rem,6vw,4.6rem);margin:.12em 0 0}
+  .coll-intro{margin-top:1rem;color:var(--ink-soft);max-width:46ch;font-size:1.02rem}
+  .coll-credit{font-family:var(--sans);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);text-align:right;line-height:1.9}
+  .coll-block{padding-top:clamp(34px,4vw,56px);margin-top:clamp(34px,4vw,56px);border-top:1px solid var(--line)}
+  .block-head{display:flex;align-items:baseline;gap:.85rem;flex-wrap:wrap}
+  .block-head h3{font-size:clamp(1.7rem,3.2vw,2.4rem)}
+  .block-sub{font-family:var(--sans);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-soft)}
+  .block-desc{margin-top:.8rem;color:var(--ink-soft);max-width:62ch;font-size:1rem}
+  .grid{display:grid;gap:clamp(14px,2vw,24px);margin-top:clamp(22px,3vw,38px)}
+  .grid-5{grid-template-columns:repeat(5,1fr)}
+  .grid-4{grid-template-columns:repeat(4,1fr)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .piece-img{aspect-ratio:3/4;background:var(--paper-2);border:1px solid var(--line);overflow:hidden}
+  .piece-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  .piece:hover .piece-img img{transform:scale(1.04)}
+  .piece figcaption{margin-top:12px}
+  .piece-name{font-family:var(--serif);font-weight:500;font-size:clamp(1rem,1.6vw,1.22rem);color:var(--ink);line-height:1.2;display:block}
+
+  /* commission */
+  .commission-body h2{font-size:clamp(2.2rem,4.4vw,3.4rem);margin:.18em 0 0}
+  .commission-body p{color:var(--ink-soft);max-width:46ch;font-size:1.04rem;margin-top:1.2rem}
+  .commission-body .link-arrow.big{margin-top:2rem}
+  .contact-list{list-style:none;margin-top:2.6rem;border-top:1px solid var(--line)}
+  .contact-list li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);font-family:var(--sans)}
+  .contact-list .k{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-soft)}
+  .contact-list .v{font-size:1rem;color:var(--ink)}
+  .contact-list .v a:hover{color:var(--teal)}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:clamp(48px,7vw,90px) 0 40px}
+  .foot-top{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(30px,5vw,80px);padding-bottom:clamp(40px,5vw,70px);border-bottom:1px solid var(--line)}
+  .foot-news h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.7rem);color:var(--ink)}
+  .foot-news p{color:var(--ink-soft);max-width:42ch;margin-top:.8rem;font-size:1rem}
+  .foot-news form{display:flex;gap:0;border-bottom:1px solid var(--ink);max-width:420px;margin-top:1.6rem}
+  .foot-news input{flex:1;background:none;border:0;padding:.7em 0;font-family:var(--sans);font-size:1rem;color:var(--ink)}
+  .foot-news input::placeholder{color:var(--ink-soft)}
+  .foot-news input:focus{outline:none}
+  .btn-submit{background:none;border:0;cursor:pointer;font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);padding:0 0 0 14px;white-space:nowrap}
+  .foot-news .msg{margin-top:.7rem;font-size:.88rem;color:var(--teal);min-height:1.2em}
+  .foot-promo{align-self:end}
+  .foot-promo-text{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.4;color:var(--ink);margin:.8rem 0 1.2rem;max-width:30ch}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:34px}
+  .foot-bottom .brand{font-size:1.3rem}
+  .foot-links{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--sans);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+  .foot-links a{color:var(--ink-soft);transition:color .2s}
+  .foot-links a:hover{color:var(--teal)}
+  .foot-cr{margin-top:30px;font-family:var(--sans);font-size:.74rem;letter-spacing:.04em;color:var(--ink-soft)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:980px){
+    .foot-top{grid-template-columns:1fr;gap:38px}
+  }
+  @media (max-width:820px){
+    .split{grid-template-columns:1fr;gap:14px}
+    .artist-grid,.craft-grid{grid-template-columns:1fr;gap:30px}
+    .portrait{max-width:420px}
+    .grid-5{grid-template-columns:repeat(3,1fr)}
+    .grid-4{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:repeat(2,1fr)}
+    .nav-links{position:absolute;top:64px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:0;padding:6px var(--pad) 16px;display:none}
+    .nav-links.open{display:flex}
+    .nav-links a{width:100%;padding:13px 0;font-size:.92rem;border-bottom:1px solid var(--line)}
+    .nav-toggle{display:block}
+  }
+  @media (max-width:520px){
+    .grid-5{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:1fr}
+    .coll-credit{text-align:left}
+    .contact-list li{flex-direction:column;gap:4px}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{transition:none;opacity:1;transform:none}
+    .piece-img img,.portrait-img img,.loom-img img,.btn,.link-arrow{transition:none}
+    .pull-cue .arrow{animation:none}
+    .stitch{transition:none;width:48px}
+    .knot,.tassel line{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav wrap">
+    <a href="#top" class="brand">Looms of <em>Africa</em></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <div class="nav-links" id="navlinks">
+      <a href="#work">The Work</a>
+      <a href="#artist">The Artist</a>
+      <a href="#craft">The Craft</a>
+      <a href="#commission">Commission</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <span class="eyebrow">West African strip-weave · Made to order</span>
+        <h1>Strip&#8209;weave,<br><em>reimagined.</em></h1>
+        <p class="lead">Looms of Africa turns handwoven Aso-oke and Kente from across West Africa into bespoke art, apparel and interiors — each piece made by hand by textile artist Usibakaiye Agbeyegbe.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#commission">Commission a piece</a>
+          <a class="link-arrow" href="#work">See the work →</a>
+        </div>
+        <button class="pull-cue" type="button" aria-label="Pull the thread to scroll down through the page">
+          <span>Pull the thread</span>
+          <span class="arrow">↓</span>
+          <span class="bead"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="mission">
+    <div class="wrap split">
+      <div class="label reveal"><span class="eyebrow">The studio</span></div>
+      <div class="body reveal">
+        <p class="statement">Every piece begins as narrow strips of cloth, woven on West African looms and worn at ceremonies. We give that cloth a second life as <em>modern, made-to-order pieces</em> — carrying a centuries-old craft to a wider world.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="artist">
+    <div class="wrap">
+      <div class="artist-grid">
+        <figure class="portrait reveal">
+          <div class="portrait-img">
+            <img src="https://static.wixstatic.com/media/c61482_cd251fb8871740068a5fd20bcd4c0869~mv2.jpg/v1/crop/x_0,y_40,w_623,h_873/fill/w_560,h_740,al_c,q_85,enc_auto/IMG_8665_edited.jpg" alt="Textile artist Usibakaiye Agbeyegbe" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <figcaption>Usibakaiye “Siba” Agbeyegbe — founder</figcaption>
+        </figure>
+        <div class="artist-body reveal">
+          <span class="eyebrow">The artist</span>
+          <h2>The hand behind the studio</h2>
+          <span class="stitch"></span>
+          <p class="name-line">British-born Nigerian · based in Nevis, St Kitts &amp; Nevis</p>
+          <p>Siba has spent years developing her own language for West African strip cloth — translating its versatility and majesty into apparel, décor and tapestry that sit just as easily in a modern home as at a ceremony. Looms of Africa is the studio she created to share that work with the world.</p>
+          <blockquote class="quote">“African strip-weave is just too beautiful to be forgotten or discarded.”<cite>— Usibakaiye</cite></blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="craft">
+    <div class="wrap">
+      <div class="craft-grid">
+        <div class="reveal">
+          <span class="eyebrow">The craft</span>
+          <h2>Woven by hand,<br>one strip at a time</h2>
+          <span class="stitch"></span>
+          <p>Strip-weave is among Africa's oldest textile traditions. On narrow looms, weavers like Mr Kola in Iseyin, Nigeria handcraft long bands of Aso-oke — hours of work each — then join them edge to edge into whole cloth.</p>
+          <p>Much of the cloth we work with is recovered from ceremonies: pieces no longer worn, too beautiful to throw away. Siba reimagines them into wearable art and pieces for the home.</p>
+          <div class="pillars">
+            <div class="pillar">
+              <div class="k">Made to order</div>
+              <div class="v">Built for you in durable modern or vintage cloth.</div>
+            </div>
+            <div class="pillar">
+              <div class="k">Fairly sourced</div>
+              <div class="v">Every commission supports the artisans behind the cloth.</div>
+            </div>
+          </div>
+        </div>
+        <figure class="loom-photo reveal">
+          <div class="loom-img">
+            <img src="https://static.wixstatic.com/media/c61482_6c1d7bf6230b4328abe2e0dd11949af9~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/c61482_6c1d7bf6230b4328abe2e0dd11949af9~mv2.jpg" alt="Mr Kola weaving Aso-oke at his loom in Iseyin, Nigeria" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <figcaption>Mr Kola at his loom — Iseyin, Nigeria</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="coll-head reveal">
+        <div>
+          <span class="eyebrow">The work</span>
+          <h2>Cognition</h2>
+          <span class="stitch"></span>
+          <p class="coll-intro">A body of work in three forms — sculptural busts, dressed figures, and tapestries woven to shift with the light.</p>
+        </div>
+        <div class="coll-credit">Charlestown Gallery — Nevis<br>November – December 2023</div>
+      </div>
+
+      <div class="coll-block reveal">
+        <div class="block-head"><h3>Olori</h3><span class="block-sub">Ten queen heads</span></div>
+        <p class="block-desc">Ten fabric busts in Yoruba Aso-oke, worn in full <em>gele</em> head-form — a tribute to the modern Yoruba woman, and a soft-textile answer to the carved wood and bronze heads of West African tradition.</p>
+        <div class="grid grid-5">
+          <figure class="piece"><div class="piece-img"><img src="https://static.wixstatic.com/media/c61482_7c2563b04bb44a0ab305466c611dac00~mv2.jpg/v1/fill/w_360,h_480,al_c,q_85,enc_auto/c61482_7c2563b04bb44a0ab305466c611dac00~mv2.jpg" alt="Olori bust — Omo Oba" loading="lazy" onerror="this.style.display='none'"></div><figcaption><span class="piece-name">Omo Oba</span></figcaption></figure>
+          <figure class="piece"><div class="piece-img"><img src="https://static.wixstatic.com/media/c61482_84736905edc44ea18c1794d85d3bfebf~mv2.jpg/v1/fill/w_360,h_480,al_c,q_85,enc_auto/c61482_84736905edc44ea18c1794d85d3bfebf~mv2.jpg" alt="Olori bust — Asake" loading="lazy" onerror="this.style.display='none'"></div><figcaption><span class="piece-name">Asake</span></figcaption></figure>
+          <figure class="piece"><div class="piece-img"><img src="https://static.wixstatic.com/media/c61482_b3b5d0e18c044516b913951f28245b99~mv2.jpg/v1/fill/w_360,h_480,al_c,q_85,enc_auto/c61482_b3b5d0e18c044516b913951f28245b99~mv2.jpg" alt="Olori bust — Asabi" loading="lazy" onerror="this.style.display='none'"></div><figcaption><span class="piece-name">Asabi</span></figcaption></figure>
+          <figure class="piece"><div class="piece-img"><img src="https://static.wixstatic.com/media/c61482_8a643ebfd2e445fcb5258ea79e9fa445~mv2.jpg/v1/fill/w_360,h_480,al_c,q_85,enc_auto/c61482_8a643ebfd2e445fcb5258ea79e9fa445~mv2.jpg" alt="Olori bust — Abeni" loading="lazy" onerror="this.style.display='none'"></div><figcaption><span class="piece-name">Abeni</span></figcaption></figure>
+          <figure class="piece"><div class="piece-img"><img src="https://static.wixstatic.com/media/c61482_59d393c2f0da4cd1b0d59fbdd1e27447~mv2.jpg/v1/fill/w_360,h_480,al_c,q_85,enc_auto/c61482_59d393c2f0da4cd1b0d59fbdd1e27447~mv2.jpg" alt="Olori bust — Aduni" loading="lazy" onerror="this.style.display='none'"></div><figcaption><span class="piece-name">Aduni</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="coll-block reveal">
+        <div class="block-head"><h3>Mannequin Mann</h3><span class="block-sub">Dressed figures</span></div>
+        <p class="block-desc">Strip cloth reassembled as contemporary apparel and statement coats, styled on the figure.</p>
+        <div class="grid grid-4">
+          <figure class="piece"><div class="piece-img"><img src="https://static.wixstatic.com/media/c61482_6837cb47f9b84c1bb568247757929088~mv2.jpg/v1/fit/w_480,h_640,q_90,enc_avif,quality_auto/c61482_6837cb47f9b84c1bb568247757929088~mv2.jpg" alt="Mannequin Mann figure I" loading="lazy" onerror="this.style.display='none'"></div><figcaption><span class="piece-name">Figure I</span></figcaption></figure>
+          <figure class="piece"><div class="piece-img"><img src="https://static.wixstatic.com/media/c61482_87390ccbf0e844efa685b684382a5f7c~mv2.jpg/v1/fit/w_480,h_640,q_90,enc_avif,quality_auto/c61482_87390ccbf0e844efa685b684382a5f7c~mv2.jpg" alt="Mannequin Mann figure II" loading="lazy" onerror="this.style.display='none'"></div><figcaption><span class="piece-name">Figure II</span></figcaption></figure>
+          <figure class="piece"><div class="piece-img"><img src="https://static.wixstatic.com/media/c61482_c2b629a3481d48c4812197f74100f6fa~mv2.png/v1/fit/w_480,h_640,q_90,enc_avif,quality_auto/c61482_c2b629a3481d48c4812197f74100f6fa~mv2.png" alt="Mannequin Mann figure III" loading="lazy" onerror="this.style.display='none'"></div><figcaption><span class="piece-name">Figure III</span></figcaption></figure>
+          <figure class="piece"><div class="piece-img"><img src="https://static.wixstatic.com/media/c61482_ebd383c8f8e54dc98f6e37e0111934d3~mv2.jpg/v1/fit/w_480,h_640,q_90,enc_avif,quality_auto/c61482_ebd383c8f8e54dc98f6e37e0111934d3~mv2.jpg" alt="Mannequin Mann figure IV" loading="lazy" onerror="this.style.display='none'"></div><figcaption><span class="piece-name">Figure IV</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="coll-block reveal">
+        <div class="block-head"><h3>Tapestries</h3><span class="block-sub">Art that changes with the light</span></div>
+        <p class="block-desc">Wall hangings woven from Aso-oke silk, set so the metallic threads catch and shift as the light moves across them — from the Giraffe, Horse, Elephant and Africa Man series.</p>
+        <div class="grid grid-3">
+          <figure class="piece"><div class="piece-img"><img src="https://static.wixstatic.com/media/c61482_1399828cb11048b4b5db68f8a4d0e169~mv2.jpg/v1/crop/x_91,y_70,w_1113,h_1862/fill/w_460,h_613,al_c,q_85,enc_auto/CognitionExhibition-CharlestownGallery-12thNovember%2C2023(35of129)_edited.jpg" alt="Emerging Elephant tapestry" loading="lazy" onerror="this.style.display='none'"></div><figcaption><span class="piece-name">Emerging Elephant</span></figcaption></figure>
+          <figure class="piece"><div class="piece-img"><img src="https://static.wixstatic.com/media/c61482_5be366be83684f1bb31578ef28bdfc60~mv2.jpg/v1/crop/x_27,y_0,w_1072,h_1694/fill/w_460,h_613,al_c,q_85,enc_auto/Shekere%20Man_edited.jpg" alt="Africa Man — Shekere tapestry" loading="lazy" onerror="this.style.display='none'"></div><figcaption><span class="piece-name">Africa Man — Shekere</span></figcaption></figure>
+          <figure class="piece"><div class="piece-img"><img src="https://static.wixstatic.com/media/c61482_551010c9c4d44548914b8b3b1e9309d9~mv2.jpg/v1/crop/x_181,y_0,w_1905,h_2918/fill/w_460,h_613,al_c,q_85,enc_auto/Walking%20Man.jpg" alt="Africa Man — Walking tapestry" loading="lazy" onerror="this.style.display='none'"></div><figcaption><span class="piece-name">Africa Man — Walking</span></figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="commission">
+    <div class="wrap split">
+      <div class="label reveal"><span class="eyebrow">Commission</span></div>
+      <div class="commission-body reveal">
+        <h2>Bring a piece to life</h2>
+        <span class="stitch"></span>
+        <p>Every piece is made to order in durable modern or vintage cloth, and can be beaded, stoned or embroidered on request. Tell us what you have in mind and we'll take it from there.</p>
+        <a class="link-arrow big" href="mailto:designs@loomsofafrica.com?subject=Looms%20of%20Africa%20commission%20enquiry">Email the studio →</a>
+        <ul class="contact-list">
+          <li><span class="k">Email</span><span class="v"><a href="mailto:designs@loomsofafrica.com">designs@loomsofafrica.com</a></span></li>
+          <li><span class="k">Studio</span><span class="v">Nevis · St Kitts &amp; Nevis</span></li>
+          <li><span class="k">Serving</span><span class="v">North America &amp; worldwide</span></li>
+          <li><span class="k">Instagram</span><span class="v"><a href="https://www.instagram.com/loomsofafrica/" target="_blank" rel="noopener">@loomsofafrica ↗</a></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-news">
+        <h3>Stay connected</h3>
+        <p>Sign up for new work, exhibitions, and a window into West African strip-weave.</p>
+        <form id="signup-form" novalidate>
+          <input id="email" type="email" placeholder="Your email" autocomplete="email" required>
+          <button class="btn-submit" type="submit">Submit →</button>
+        </form>
+        <div class="msg" id="signup-msg" role="status"></div>
+      </div>
+      <div class="foot-promo">
+        <span class="eyebrow">Commission</span>
+        <p class="foot-promo-text">Have a piece of cloth with a story? We'll reimagine it into something to keep.</p>
+        <a class="link-arrow" href="#commission">Start a commission →</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <a href="#top" class="brand">Looms of <em>Africa</em></a>
+      <div class="foot-links">
+        <a href="#work">The Work</a>
+        <a href="#artist">The Artist</a>
+        <a href="#craft">The Craft</a>
+        <a href="#commission">Commission</a>
+        <a href="https://www.instagram.com/loomsofafrica/" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
+    </div>
+    <div class="foot-cr">© 2026 Looms of Africa — Handmade by Usibakaiye Agbeyegbe</div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // mailing list (client-side demo only)
+  const form = document.getElementById('signup-form');
+  const msg = document.getElementById('signup-msg');
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const v = document.getElementById('email').value.trim();
+    const ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
+    msg.textContent = ok ? "Thank you — you're on the list." : "Please enter a valid email address.";
+    if (ok) form.reset();
+  });
+
+  /* ===== the coloured thread — kept in the left margin, off the text ===== */
+  (function () {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const bead = document.querySelector('.pull-cue .bead');
+    const cue  = document.querySelector('.pull-cue');
+    const refWrap = document.querySelector('.wrap');
+    if (!bead || !refWrap) return;
+
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');  svg.setAttribute('class', 'thread-layer');
+    
+    // Each strand gets a unique ID to drive its own path math
+    const STR = [{ id: 1, cls: 'w1' }, { id: 2, cls: 'w2' }, { id: 3, cls: 'w3' }];
+    const halo = [], wire = [], len = [];
+    
+    STR.forEach(s => {
+      const h = document.createElementNS(NS, 'path'); h.setAttribute('class', 'wire-halo');
+      const p = document.createElementNS(NS, 'path'); p.setAttribute('class', 'wire ' + s.cls);
+      svg.appendChild(h); svg.appendChild(p); halo.push(h); wire.push(p); len.push(1);
+    });
+    const knotG  = document.createElementNS(NS, 'g');
+    const tassel = document.createElementNS(NS, 'g');    tassel.setAttribute('class', 'tassel');
+    svg.appendChild(knotG); svg.appendChild(tassel);
+    document.body.appendChild(svg);
+
+    let x0 = 0, y0 = 0, endY = 0, baseX = 40, amp = 8;
+    let knots = [], tasselOn = false, builtH = -1, builtW = -1;
+    let target = 0, current = 0, raf = 0;
+
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+    const smooth = (t) => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
+    const cAt = (y) => x0 + (baseX - x0) * smooth((y - y0) / 360);   
+    const braidAmp = (y) => amp * smooth((y - y0) / 170);            
+    
+    // Smooth, randomized drift formula
+    const strandX = (y, id) => {
+      // Base curve mixed with a secondary wobble so it naturally loops
+      let v = Math.sin((y - y0) * 0.015 + id * 2.09) * 0.6;
+      v += Math.sin((y - y0) * 0.035 - id * 1.5) * 0.4;
+      return cAt(y) + braidAmp(y) * v * 1.4;
+    };
+
+    function circle(x, y, r, cls) {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x.toFixed(1)); c.setAttribute('cy', y.toFixed(1));
+      c.setAttribute('r', r); c.setAttribute('class', cls);
+      return c;
+    }
+
+    function build() {
+      const w = document.documentElement.clientWidth;
+      svg.style.height = '0px';
+      const b  = bead.getBoundingClientRect();
+      const wr = refWrap.getBoundingClientRect();
+      const P  = parseFloat(getComputedStyle(refWrap).paddingLeft) || 24;
+      const sx = window.scrollX, sy = window.scrollY;
+      x0 = b.left + sx + b.width / 2;
+      y0 = b.top + sy + b.height / 2;
+      endY = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight) - 26;
+      baseX = wr.left + sx + P * 0.4;            
+      amp   = clamp(P * 0.16, 3, 9);             
+      builtH = endY; builtW = w;
+
+      svg.setAttribute('width', w);
+      svg.setAttribute('height', endY + 30);
+      svg.style.height = (endY + 30) + 'px';
+
+      const d = STR.map(() => '');
+      for (let y = y0; y <= endY; y += 6) {
+        STR.forEach((s, i) => { d[i] += (y === y0 ? 'M ' : ' L ') + strandX(y, s.id).toFixed(1) + ' ' + y.toFixed(1); });
+      }
+      STR.forEach((s, i) => {
+        halo[i].setAttribute('d', d[i]); wire[i].setAttribute('d', d[i]);
+        len[i] = wire[i].getTotalLength() || 1;
+        halo[i].style.strokeDasharray = len[i]; wire[i].style.strokeDasharray = len[i];
+      });
+
+      knotG.textContent = '';
+      knots = [];
+      knotG.appendChild(circle(x0, y0, 4.5, 'knot start'));
+      const seen = new Set();
+      document.querySelectorAll('#mission, #artist, #craft, #work, #commission, footer').forEach(el => {
+        const yk = Math.round(el.getBoundingClientRect().top + sy);
+        if (yk <= y0 + 30 || seen.has(yk)) return;
+        seen.add(yk);
+        const c = circle(cAt(yk), yk, 4, 'knot');
+        knotG.appendChild(c);
+        knots.push({ y: yk, el: c, on: false });
+      });
+
+      tassel.textContent = '';
+      const tx = cAt(endY);
+      [-13, -6, 0, 6, 13].forEach(dx => {
+        const ln = document.createElementNS(NS, 'line');
+        ln.setAttribute('x1', tx.toFixed(1)); ln.setAttribute('y1', endY);
+        ln.setAttribute('x2', (tx + dx).toFixed(1)); ln.setAttribute('y2', endY + 20);
+        tassel.appendChild(ln);
+      });
+      tasselOn = false;
+
+      measureTarget();
+      current = target;
+      render();
+    }
+
+    function measureTarget() {
+      const yfront = clamp(window.scrollY + window.innerHeight * 0.6, y0, endY);
+      target = (yfront - y0) / Math.max(1, endY - y0);
+    }
+
+    function render() {
+      const off = 1 - current;
+      for (let i = 0; i < STR.length; i++) {
+        const o = len[i] * off;
+        halo[i].style.strokeDashoffset = o;
+        wire[i].style.strokeDashoffset = o;
+      }
+      const yfront = y0 + (endY - y0) * current;
+      for (const k of knots) {
+        if (!k.on && yfront >= k.y) { k.on = true; k.el.classList.add('on'); }
+        else if (k.on && yfront < k.y - 6) { k.on = false; k.el.classList.remove('on'); }
+      }
+      if (!tasselOn && current > 0.985) { tasselOn = true; tassel.classList.add('on'); }
+      else if (tasselOn && current < 0.965) { tasselOn = false; tassel.classList.remove('on'); }
+      if (cue && window.scrollY > 40) cue.classList.add('hide');
+    }
+
+    function loop() {
+      current += (target - current) * 0.15;
+      if (Math.abs(target - current) < 0.0006) { current = target; render(); raf = 0; return; }
+      render();
+      raf = requestAnimationFrame(loop);
+    }
+    function kick() { measureTarget(); if (!raf) raf = requestAnimationFrame(loop); }
+
+    if (reduce) {
+      build();
+      current = 1; render();
+      if (cue) cue.classList.add('hide');
+      return;
+    }
+
+    window.addEventListener('scroll', kick, { passive: true });
+    build();
+    window.addEventListener('load', build);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+    let rt;
+    new ResizeObserver(() => {
+      const h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight) - 26;
+      const w = document.documentElement.clientWidth;
+      if (Math.abs(h - builtH) < 2 && w === builtW) return;
+      clearTimeout(rt); rt = setTimeout(build, 150);
+    }).observe(document.body);
+
+    if (cue) cue.addEventListener('click', () => {
+      window.scrollTo({ top: Math.min(window.scrollY + window.innerHeight * 0.9, endY), behavior: 'smooth' });
+    });
+  })();
+</script>
+</body>
+</html>
